@@ -1,0 +1,12 @@
+.faq_section{
+  color: #fff;
+  background-color: #000;
+  .faq_header{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    button{
+      width: 30px;
+    }
+  }
+}
