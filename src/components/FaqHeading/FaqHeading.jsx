@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import './FaqHeading.scss'
 import FaqShort from '../FaqShort/FaqShort'
+import { v4 as uuidv4 } from 'uuid';
 
-const FaqHeading = () => {
+
+const FaqHeading = (props) => {
 
 const [FaqShortStatus, setFaqShortStatus] = useState(false);
 
@@ -12,13 +14,11 @@ setFaqShortStatus((prevFaqShortStatus) => !prevFaqShortStatus);
 
   return ( 
     <>
-      <section className="faq_section">
         <div className='faq_header'>
-          <p>Why is React great?</p>
+          <p>{props.question}</p>
           <button onClick={showFaqShort}>{FaqShortStatus ? '-' : '+'}</button>
         </div>
-          {FaqShortStatus && <FaqShort/>}
-      </section>
+          {FaqShortStatus && <FaqShort key={uuidv4()} answer={props.answer} answerLong={props.answerLong}/>}
     </>
   );
 }

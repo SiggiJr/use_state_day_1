@@ -1,8 +1,10 @@
 import './FaqShort.scss'
 import FaqLong from '../FaqLong/FaqLong';
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
-const FaqShort = () => {
+
+const FaqShort = (props) => {
 
   const [faqLongStatus, setFaqLongStatus] = useState(false)
 
@@ -13,10 +15,10 @@ const FaqShort = () => {
   return ( 
     <>
       <div className="faq_short">
-        <p>Fast Learning Curve</p>
+        <p>{props.answer}</p>
         <button onClick={showFaqLong}>{faqLongStatus ? '-' : '+'}</button>
       </div>
-          {faqLongStatus && <FaqLong/>}
+          {faqLongStatus && <FaqLong key={uuidv4()} answerLong={props.answerLong}/>}
     </>
   );
 }
